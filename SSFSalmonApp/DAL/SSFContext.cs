@@ -31,7 +31,7 @@ namespace SSFSalmonApp.DAL
 
             modelBuilder.Entity<Comment>().HasRequired(f => f.WritteByUser).WithMany(u => u.CommentList);
 
-            modelBuilder.Entity<Comment>().HasRequired(f => f.Topicid).WithMany(u => u.Comments);
+            modelBuilder.Entity<Comment>().HasRequired(f => f.Topic).WithMany(u => u.Comments);
 
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             base.OnModelCreating(modelBuilder);

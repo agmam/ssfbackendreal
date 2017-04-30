@@ -22,7 +22,6 @@ namespace SSFSalmonApp.Controllers
         // GET: api/Fish
         public IQueryable<Fish> GetFishes()
         {
-            int i = 2;
             return db.Fishes.Include(x => x.CaughtByUser);
         }
 
