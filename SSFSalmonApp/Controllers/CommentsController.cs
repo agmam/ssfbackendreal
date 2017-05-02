@@ -73,17 +73,21 @@ namespace SSFSalmonApp.Controllers
 
         // POST: api/Comments
         [ResponseType(typeof(Comment))]
-        public IHttpActionResult PostComment(Comment comment)
+        public  IHttpActionResult PostComment(Comment comment)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            db.Entry(comment.Topic).State = EntityState.Unchanged;
+            db.Entry(comment.WrittenByUser).State = EntityState.Unchanged;
 
-            db.Comments.Add(comment);
+            Comment c = db.Comments.Add(comment);
+
+            // dont include topic, because it will save a new topic
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = comment.Id }, comment);
+            return CreatedAtRoute("DefaultApi", new { id = comment.Id }, c);
         }
 
         // DELETE: api/Comments/5

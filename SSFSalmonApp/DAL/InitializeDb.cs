@@ -16,12 +16,12 @@ namespace SSFSalmonApp.DAL
             List<Topic> Topics = new List<Topic>();
             List<Comment> Comments = new List<Comment>();
 
-            Comment c1 = new Comment() { Content="hey guys, see my long fish", Date=DateTime.Now, Topic=null, WritteByUser=null};
-            Comment c2 = new Comment() { Content = "wow its long", Date = DateTime.Now, Topic = null, WritteByUser = null };
-            Comment c3 = new Comment() { Content = "yes i dink so to", Date = DateTime.Now, Topic = null, WritteByUser = null };
-            Comment c4 = new Comment() { Content = "its long as my dick", Date = DateTime.Now, Topic = null, WritteByUser = null };
-            Comment c5 = new Comment() { Content = "no its not anders", Date = DateTime.Now, Topic = null, WritteByUser = null };
-            Comment c6 = new Comment() { Content = "yes im agmam", Date = DateTime.Now, Topic = null, WritteByUser = null };
+            Comment c1 = new Comment() { Content="hey guys, see my long fish", Date=DateTime.Now, Topic=null, WrittenByUser=null};
+            Comment c2 = new Comment() { Content = "wow its long", Date = DateTime.Now, Topic = null, WrittenByUser = null };
+            Comment c3 = new Comment() { Content = "yes i dink so to", Date = DateTime.Now, Topic = null, WrittenByUser = null };
+            Comment c4 = new Comment() { Content = "its long as my dick", Date = DateTime.Now, Topic = null, WrittenByUser = null };
+            Comment c5 = new Comment() { Content = "no its not anders", Date = DateTime.Now, Topic = null, WrittenByUser = null };
+            Comment c6 = new Comment() { Content = "yes im agmam", Date = DateTime.Now, Topic = null, WrittenByUser = null };
             Comments.Add(c1);
             Comments.Add(c2);
             Comments.Add(c3);
@@ -56,7 +56,7 @@ namespace SSFSalmonApp.DAL
             foreach (Comment c in Comments)
             {
                 c.Topic = topic;
-                c.WritteByUser = Esben;
+                c.WrittenByUser = Esben;
             }
             topic.WrittenByUser = Emil;
 

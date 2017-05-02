@@ -29,7 +29,7 @@ namespace SSFSalmonApp.DAL
 
             modelBuilder.Entity<Topic>().HasRequired(t => t.WrittenByUser).WithMany(c => c.topics);
 
-            modelBuilder.Entity<Comment>().HasRequired(f => f.WritteByUser).WithMany(u => u.CommentList);
+            modelBuilder.Entity<Comment>().HasRequired(f => f.WrittenByUser).WithMany(u => u.CommentList);
 
             modelBuilder.Entity<Comment>().HasRequired(f => f.Topic).WithMany(u => u.Comments);
 

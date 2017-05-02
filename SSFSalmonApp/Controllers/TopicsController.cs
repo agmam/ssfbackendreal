@@ -81,21 +81,41 @@ namespace SSFSalmonApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Topics.Add(topic);
+
+           // db.Entry(topic.Comments).State = EntityState.Unchanged;
+            db.Entry(topic.WrittenByUser).State = EntityState.Unchanged;
+
+            Topic t = db.Topics.Add(topic);
+
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = topic.Id }, topic);
+            return CreatedAtRoute("DefaultApi", new { id = topic.Id }, t);
         }
 
         // DELETE: api/Topics/5
         [ResponseType(typeof(Topic))]
         public IHttpActionResult DeleteTopic(int id)
         {
-            Topic topic = db.Topics.Find(id);
+             Topic topic = db.Topics.Include("Comments").FirstOrDefault(t => t.Id == id);
+           // Topic topic = db.Topics.Find(id);
             if (topic == null)
             {
                 return NotFound();
             }
+            var comments = from c in db.Comments
+                        where c.TopicId == id //this is foreing key
+                        select c;
+
+            foreach (Comment  cc in comments)
+            {
+                db.Comments.Remove(cc);
+
+            }
+
+              //  db.Entry(c).State = EntityState.Deleted;
+            
+          //  db.SaveChanges();
+            
 
             db.Topics.Remove(topic);
             db.SaveChanges();
