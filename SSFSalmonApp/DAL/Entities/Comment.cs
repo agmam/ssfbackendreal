@@ -6,8 +6,9 @@ namespace SSFSalmonApp.DAL.Entities
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public Topic Topicid { get; set; }
-        public String Comments { get; set; }
-        public User WritteByUser { get; set; }
+        public Topic Topic { get; set; }
+        public int TopicId { get; set; }
+        public String Content { get; set; }
+        public User WrittenByUser { get; set; }
     }
 }

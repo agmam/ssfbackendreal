@@ -13,7 +13,26 @@ namespace SSFSalmonApp.DAL
         {
             List<Fish> Fishes = new List<Fish>();
             List<User> Users = new List<User>();
-            int i = 0;
+            List<Topic> Topics = new List<Topic>();
+            List<Comment> Comments = new List<Comment>();
+
+            Comment c1 = new Comment() { Content="hey guys, see my long fish", Date=DateTime.Now, Topic=null, WrittenByUser=null};
+            Comment c2 = new Comment() { Content = "wow its long", Date = DateTime.Now, Topic = null, WrittenByUser = null };
+            Comment c3 = new Comment() { Content = "yes i dink so to", Date = DateTime.Now, Topic = null, WrittenByUser = null };
+            Comment c4 = new Comment() { Content = "its long as my dick", Date = DateTime.Now, Topic = null, WrittenByUser = null };
+            Comment c5 = new Comment() { Content = "no its not anders", Date = DateTime.Now, Topic = null, WrittenByUser = null };
+            Comment c6 = new Comment() { Content = "yes im agmam", Date = DateTime.Now, Topic = null, WrittenByUser = null };
+            Comments.Add(c1);
+            Comments.Add(c2);
+            Comments.Add(c3);
+            Comments.Add(c4);
+            Comments.Add(c5);
+            Comments.Add(c6);
+            Topic topic = new Topic() { Comments = Comments, Header="Trout discussion", Date=DateTime.Now };
+           
+
+
+
             User Esben = new User()
             {
                 Id = 1,
@@ -34,6 +53,12 @@ namespace SSFSalmonApp.DAL
             };
             Users.Add(Esben);
             Users.Add(Emil);
+            foreach (Comment c in Comments)
+            {
+                c.Topic = topic;
+                c.WrittenByUser = Esben;
+            }
+            topic.WrittenByUser = Emil;
 
             Fish f = new Fish()
             {
@@ -60,6 +85,17 @@ namespace SSFSalmonApp.DAL
             Fishes.Add(f);
             Fishes.Add(f2);
 
+
+
+
+            foreach(Topic t in Topics)
+            {
+                context.Topics.Add(t);
+            }
+            foreach (Comment c in Comments)
+            {
+                context.Comments.Add(c);
+            }
             foreach (User u in Users)
             {
                 context.Users.Add(u);
