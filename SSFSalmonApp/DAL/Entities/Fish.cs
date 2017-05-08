@@ -12,5 +12,6 @@ namespace SSFSalmonApp.DAL.Entities
         public double Weight { get; set; }
         public String Bait { get; set; }
         public String Location { get; set; }
+        public int CaughtByUserId { get; set; }
     }
 }

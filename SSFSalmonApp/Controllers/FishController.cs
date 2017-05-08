@@ -81,7 +81,7 @@ namespace SSFSalmonApp.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            db.Entry(fish.CaughtByUser).State = EntityState.Unchanged;
             db.Fishes.Add(fish);
             db.SaveChanges();
 
