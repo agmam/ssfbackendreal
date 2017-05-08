@@ -102,18 +102,18 @@ namespace SSFSalmonApp.Controllers
             return Ok(user);
         }
 
-        protected override void Dispose(bool disposing)
+        public IHttpActionResult Login(User user)
         {
-            if (disposing)
+            User u = db.Users.FirstOrDefault(x => x.Name == user.Name && x.Password == user.Password);
+            if(u != null)
             {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+                // generate token
+                
 
-        private bool UserExists(int id)
-        {
-            return db.Users.Count(e => e.Id == id) > 0;
+            }
+
+            return Ok();
         }
+        
     }
 }
